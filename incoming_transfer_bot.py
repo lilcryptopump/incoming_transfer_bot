@@ -39,7 +39,7 @@ for op in blockchain.stream(['transfer']):
                                     op['amount'],
                                     op['amount'],
                                     op['block_num']))
-    if payee == ACCOUNT_WATCHING:
+#    if payee == ACCOUNT_WATCHING:
 #        message = client.messages.create(
 #                                body='{} sent you {} {} in block {}.'.format(
 #                                    op['from'],
