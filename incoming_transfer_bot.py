@@ -32,7 +32,7 @@ for op in blockchain.stream(['transfer']):
     from_account = Account(op['from']).name
     asset_symbol = Asset(op['amount']['asset_id']).symbol
     asset_precision = int(Asset(op['amount']['asset_id']).precision)
-    amount = int(op['amount']['amount']) / (10 ^ asset_precision)
+    amount = int(op['amount']['amount']) / (10**asset_precision)
     pprint('{} sent {} {} {} in block {}.'.format(
                                     from_account,
                                     payee,
