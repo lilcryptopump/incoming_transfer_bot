@@ -33,8 +33,9 @@ for op in blockchain.stream(['transfer']):
     asset_symbol = Asset(op['amount']['asset_id']).symbol
     asset_precision = Asset(op['amount']['asset_id']).precision
     amount = op['amount']['amount'] / (10*asset_precision)
-    pprint('{} sent you {} {} in block {}.'.format(
+    pprint('{} sent {} {} {} in block {}.'.format(
                                     from_account,
+                                    ACCOUNT_WATCHING,
                                     amount,
                                     asset_symbol,
                                     op['block_num']))
