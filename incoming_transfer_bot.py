@@ -16,6 +16,19 @@ BOT_PHONE_NUMBER = '+17637031688'
 YOUR_PHONE_NUMBER = '+19522128926'
 
 
+
+bitshares = BitShares(
+                        node=[
+                            "wss://na.openledger.info/ws",
+                            "wss://kc-us-dex.xeldal.com/ws"
+                        ]
+            )
+
+blockchain = Blockchain(
+                        blockchain_instance=bitshares,
+                        mode='head'
+)
+
 for op in blockchain.stream(['transfer']):
     payee = Account(op['to']).name
     pprint(op)
