@@ -14,7 +14,6 @@ account_sid = 'AC0d3a91069b2604617ad1e765414f6631'
 auth_token = ''
 client = Client(account_sid, auth_token)
 
-
 bitshares = BitShares(
                         node=[
                             "wss://na.openledger.info/ws",
@@ -33,6 +32,8 @@ for op in blockchain.stream(['transfer']):
     asset_symbol = Asset(op['amount']['asset_id']).symbol
     asset_precision = int(Asset(op['amount']['asset_id']).precision)
     amount = int(op['amount']['amount']) / (10**asset_precision)
+    Asset.clear_cache()
+    Account.clear_cache()
     pprint('{} sent {} {} {} in block {}.'.format(
                                     from_account,
                                     payee,
@@ -47,8 +48,8 @@ for op in blockchain.stream(['transfer']):
                                     amount,
                                     asset_symbol,
                                     op['block_num']
-                               ),
+                                    ),
                                 from_=BOT_PHONE_NUMBER,
-                               to=YOUR_PHONE_NUMBER
+                                to=YOUR_PHONE_NUMBER
                                 )
-        print(message.sid)
+        pprint(message.sid)
