@@ -13,7 +13,7 @@ from twilio.rest import Client
 # User Inputs
 ACCOUNT_WATCHING = 'iamredbar1'
 BOT_PHONE_NUMBER = '+17637031688'
-YOUR PHONE NUMBER = '+19522128926'
+YOUR_PHONE_NUMBER = '+19522128926'
 
 
 for op in blockchain.stream(['transfer']):
