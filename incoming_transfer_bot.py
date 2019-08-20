@@ -34,21 +34,16 @@ for op in blockchain.stream(['transfer']):
     amount = int(op['amount']['amount']) / (10**asset_precision)
     Asset.clear_cache()
     Account.clear_cache()
-    pprint('{} sent {} {} {} in block {}.'.format(
+    body = '{} sent {} {} {} in block {}.'.format(
                                     from_account,
                                     payee,
                                     amount,
                                     asset_symbol,
-                                    op['block_num']))
+                                    op['block_num'])
+    pprint(body)
     if payee == ACCOUNT_WATCHING:
         message = client.messages.create(
-                                body='{} sent {} {} {} in block {}.'.format(
-                                    from_account,
-                                    payee,
-                                    amount,
-                                    asset_symbol,
-                                    op['block_num']
-                                    ),
+                                body=body,
                                 from_=BOT_PHONE_NUMBER,
                                 to=YOUR_PHONE_NUMBER
                                 )
