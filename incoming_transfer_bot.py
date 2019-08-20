@@ -35,7 +35,7 @@ for op in blockchain.stream(['transfer']):
     amount = op['amount']['amount'] / (10*asset_precision)
     pprint('{} sent {} {} {} in block {}.'.format(
                                     from_account,
-                                    ACCOUNT_WATCHING,
+                                    payee,
                                     amount,
                                     asset_symbol,
                                     op['block_num']))
