@@ -31,7 +31,8 @@ blockchain = Blockchain(
 
 for op in blockchain.stream(['transfer']):
     payee = Account(op['to']).name
-    pprint(op)
+    for o in op:
+      pprint(o)
 #    if payee == ACCOUNT_WATCHING:
         
 
