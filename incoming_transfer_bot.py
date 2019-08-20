@@ -1,13 +1,8 @@
-from time import sleep
-import time
 from pprint import pprint
-
 from bitshares.account import Account
-from bitshares.block import Block
 from bitshares.blockchain import Blockchain
 from bitshares.asset import Asset
 from bitshares import BitShares
-
 from twilio.rest import Client
 
 # User Inputs
@@ -34,10 +29,14 @@ blockchain = Blockchain(
 
 for op in blockchain.stream(['transfer']):
     payee = Account(op['to']).name
+    from_account = Account(op['from']).name
+    asset_symbol = Asset(op['amount']['asset_id']).symbol
+    asset_precision = Asset(op['amount']['asset_id']).precision
+    amount = op['amount']['amount'] / (10*asset_precision)
     pprint('{} sent you {} {} in block {}.'.format(
-                                    op['from'],
-                                    op['amount'],
-                                    op['amount'],
+                                    from_account,
+                                    amount,
+                                    asset_symbol,
                                     op['block_num']))
 #    if payee == ACCOUNT_WATCHING:
 #        message = client.messages.create(
