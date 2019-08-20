@@ -1,6 +1,6 @@
 from time import sleep
 import time
-import pprint
+from pprint import pprint
 
 from bitshares.account import Account
 from bitshares.block import Block
